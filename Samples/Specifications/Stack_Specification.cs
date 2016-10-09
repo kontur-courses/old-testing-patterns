@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using NUnit.Framework;
 
-namespace Kontur.Courses.Testing.Patterns.Specifications
+namespace Samples.Specifications
 {
 	[TestFixture]
 	public class Stack_Specification

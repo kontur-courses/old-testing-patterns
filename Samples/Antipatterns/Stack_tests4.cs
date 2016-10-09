@@ -2,7 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 
-namespace Kontur.Courses.Testing.Patterns.Antipatterns
+namespace Samples.Antipatterns
 {
 	public class Stack_tests4
 	{

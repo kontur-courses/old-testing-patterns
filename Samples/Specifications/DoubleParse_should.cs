@@ -1,7 +1,7 @@
-using NUnit.Framework;
 using System.Globalization;
+using NUnit.Framework;
 
-namespace Kontur.Courses.Testing.Patterns.Specifications
+namespace Samples.Specifications
 {
 	[TestFixture]
 	public class DoubleParse_should

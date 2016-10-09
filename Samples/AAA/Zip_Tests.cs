@@ -1,14 +1,16 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
+using NUnit.Framework;
 
-namespace Kontur.Courses.Testing.Patterns.AAA
+namespace Samples.AAA
 {
 	[TestFixture]
 	public class Zip_Tests
 	{
+	    private int Field = 5;
+
 		[Test]
 		public void EqualSizeArrays()
 		{
@@ -28,7 +30,7 @@ namespace Kontur.Courses.Testing.Patterns.AAA
 
 			var result = arr1.Zip(arr2, Tuple.Create);
 
-			CollectionAssert.IsEmpty(result);
+		    result.Should().BeEmpty();
 		}
 
 		[Test]
@@ -39,8 +41,8 @@ namespace Kontur.Courses.Testing.Patterns.AAA
 
 			var result = arr1.Zip(arr2, Tuple.Create);
 
-			CollectionAssert.IsEmpty(result);
-		}
+            result.Should().BeEmpty();
+        }
 
 		[Test]
 		public void SecondIsEmpty()
@@ -50,8 +52,8 @@ namespace Kontur.Courses.Testing.Patterns.AAA
 
 			var result = arr1.Zip(arr2, Tuple.Create);
 
-			CollectionAssert.IsEmpty(result);
-		}
+            result.Should().BeEmpty();
+        }
 
 		[Test]
 		public void FirstIsInfinite()
@@ -61,7 +63,11 @@ namespace Kontur.Courses.Testing.Patterns.AAA
 
 			var result = infiniteArr2.Zip(arr2, Tuple.Create);
 
-			CollectionAssert.AreEqual(new[] { Tuple.Create(42, 1), Tuple.Create(42, 2) }, result);
+		    result.ShouldBeEquivalentTo(new[]
+		    {
+		        Tuple.Create(42, 1),
+                Tuple.Create(42, 2)
+		    });
 		}
 
 		[Test]
@@ -71,7 +77,11 @@ namespace Kontur.Courses.Testing.Patterns.AAA
 
 			var result = arr1.Zip(Infinite(), Tuple.Create);
 
-			CollectionAssert.AreEqual(new[] { Tuple.Create(1, 42), Tuple.Create(2, 42) }, result);
+            result.ShouldBeEquivalentTo(new[]
+            {
+                Tuple.Create(1, 42),
+                Tuple.Create(2, 42)
+            });
 		}
 
 		private static IEnumerable<int> Infinite()
@@ -79,7 +89,6 @@ namespace Kontur.Courses.Testing.Patterns.AAA
 			while (true)
 				yield return 42;
 			// ReSharper disable once FunctionNeverReturns
-		}
-
+		}   
 	}
 }
